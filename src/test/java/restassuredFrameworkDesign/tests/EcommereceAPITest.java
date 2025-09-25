@@ -99,5 +99,23 @@ public class EcommereceAPITest {
 		.statusCode(201)
 		.extract().response().asString();
 		
+		// delete  product
+		
+		RequestSpecification deleteOrder = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").setContentType(ContentType.JSON)
+		.addHeader("Authorization", loginResponse.getToken()).addPathParam("productID", Utillitys.evaluateJsonFromString(responseCreateOrder, "productOrderId[0]")).build();
+		
+		given()
+		.log()
+		.all()
+		.when()
+		.spec(deleteOrder)
+		.delete("/api/ecom/product/delete-product/{productID}")
+		.then()
+		.log()
+		.all()
+		.assertThat()
+		.statusCode(200)
+		.body("message", equalTo("Product Deleted Successfully"));
+		
 	}
 }
