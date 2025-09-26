@@ -92,4 +92,14 @@ public class Payloads {
 				+ "\"author\":\""+author+"\"\r\n"
 				+ "}";
 	}
+	
+	public static String deletePlaceApi(String place_id) {
+		
+		
+		
+		return "{\r\n"
+				+ "\r\n"
+				+ "    \"place_id\":\""+place_id+"\"\r\n"
+				+ "}";
+	}
 }
