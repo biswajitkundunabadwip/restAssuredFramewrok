@@ -15,14 +15,14 @@ public class FrameWorkBaseTest extends TestBase{
 	String placeId=null;
 	String address="Kolkata,Salt Lake";
 	
-	@Test
+	@Test(groups = {"placeAPI",""})
 	public void addPlaceApi() {
 		String response=given()
 				.log()
 				.all()
 				.spec(getRequestSpecification())
 				.queryParam("key", "qaclick123")
-				.header("Content-Type", "application/json")
+				.header("Content-Type",prop.get("Content-Type"))
 				.body(Payloads.addPlace("Kolkata"))
 				.when().post(URI.POST_ADD_PLACE.getURI()).then().assertThat().statusCode(200)
 				.body("scope", equalTo("APP"))
@@ -33,7 +33,7 @@ public class FrameWorkBaseTest extends TestBase{
 		placeId=Utillitys.evaluateJsonFromString(response, "place_id");
 	}
 	
-	@Test(dependsOnMethods = "addPlaceApi")
+	@Test(dependsOnMethods = "addPlaceApi",groups = {"placeAPI"})
 	public void updateAddress() {
 		given().log().all().queryParam("key", "qaclick123")
 		.queryParam("place_id ", placeId)
@@ -51,7 +51,7 @@ public class FrameWorkBaseTest extends TestBase{
 	}
 	
 	
-	@Test(dependsOnMethods = "updateAddress")
+	@Test(dependsOnMethods = "updateAddress",groups = {"placeAPI"})
 	public void getAddress() {
 		
 		String getPlaceApiResponse=given().log().all()
@@ -71,7 +71,7 @@ public class FrameWorkBaseTest extends TestBase{
 		Assert.assertEquals(Utillitys.evaluateJsonFromString(getPlaceApiResponse, "address"), address);
 	}
 	
-	@Test(dependsOnMethods = "getAddress")
+	@Test(dependsOnMethods = "getAddress",groups = {"placeAPI"})
 	public void deleteAddress() {
 		given()
 		.log()
