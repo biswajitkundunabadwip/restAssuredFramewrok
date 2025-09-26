@@ -1,19 +1,19 @@
 package restassuredFrameworkDesign.tests;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.io.File;
+import java.util.ArrayList;
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import request.ecommerce.pojo.LoginRequest;
-import request.ecommerce.pojo.LoginResponse;
 import request.ecommerce.pojo.OrderDetails;
 import request.ecommerce.pojo.OrderRequest;
+import response.ecommerce.pojo.LoginResponse;
 import restassuredFrameworkDesign.Utils.Utillitys;
-
-import static org.hamcrest.Matchers.*;
-
-import java.io.File;
-import java.util.ArrayList;
 
 public class EcommereceAPITest {
 

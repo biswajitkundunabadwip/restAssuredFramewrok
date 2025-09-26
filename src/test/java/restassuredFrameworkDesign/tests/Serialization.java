@@ -6,8 +6,8 @@ import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
 
 import io.restassured.RestAssured;
-import request.pojo.AddLocation;
-import request.pojo.location;
+import request.places.pojo.AddLocation;
+import request.places.pojo.location;
 import restassuredFrameworkDesign.Payloads.Payloads;
 
 public class Serialization {

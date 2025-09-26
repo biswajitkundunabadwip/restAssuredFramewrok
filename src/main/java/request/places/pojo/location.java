@@ -1,4 +1,4 @@
-package request.pojo;
+package request.places.pojo;
 
 public class location {
 	private int lat;

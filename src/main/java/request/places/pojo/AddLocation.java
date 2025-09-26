@@ -1,4 +1,4 @@
-package request.pojo;
+package request.places.pojo;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ public class AddLocation {
 	private String website;
 	private String language;
 	
-	public request.pojo.location getLocation() {
+	public request.places.pojo.location getLocation() {
 		return location;
 	}
-	public void setLocation(request.pojo.location location) {
+	public void setLocation(request.places.pojo.location location) {
 		this.location = location;
 	}
 	public int getAccuracy() {

@@ -1,4 +1,4 @@
-package restassuredFrameworkDesign.Utils;
+package restassuredFrameworkDesign.tests;
 
 import org.testng.Assert;
 
