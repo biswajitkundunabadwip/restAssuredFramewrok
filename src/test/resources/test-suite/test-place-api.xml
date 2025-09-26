@@ -1,0 +1,8 @@
+<suite name="Automate the place API Suite">
+	<test name="Will test add,get,update,delete feature of place api">
+		<classes>
+			<class
+				name="restassuredFrameworkDesign.tests.FrameWorkBaseTest" />
+		</classes>
+	</test>
+</suite>

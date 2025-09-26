@@ -3,16 +3,9 @@ package restassuredFrameworkDesign.tests;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import javax.swing.text.Utilities;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.internal.annotations.TestAnnotation;
 
-import com.sun.org.apache.xml.internal.serializer.utils.Utils;
-
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import restassuredFrameworkDesign.Payloads.Payloads;
 import restassuredFrameworkDesign.Utils.TestBase;
 import restassuredFrameworkDesign.Utils.URI;
@@ -21,6 +14,7 @@ import restassuredFrameworkDesign.Utils.Utillitys;
 public class FrameWorkBaseTest extends TestBase{
 	String placeId=null;
 	String address="Kolkata,Salt Lake";
+	
 	@Test
 	public void addPlaceApi() {
 		String response=given()
@@ -41,10 +35,10 @@ public class FrameWorkBaseTest extends TestBase{
 	
 	@Test(dependsOnMethods = "addPlaceApi")
 	public void updateAddress() {
-		String address="Kolkata,Baguiati";
 		given().log().all().queryParam("key", "qaclick123")
 		.queryParam("place_id ", placeId)
 		.header("Content-Type", "application/json")
+		.spec(getRequestSpecification())
 		.body(Payloads.updatePlace(placeId,address ))
 		.when()
 		.put(URI.PUT_UPDATE_PLACE.getURI())
@@ -63,6 +57,7 @@ public class FrameWorkBaseTest extends TestBase{
 		String getPlaceApiResponse=given().log().all()
 		.queryParam("key", "qaclick123")
 		.queryParam("place_id", placeId)
+		.spec(getRequestSpecification())
 	.when()
 		.get(URI.GET_PLACE.getURI())
 		.then()
@@ -83,7 +78,6 @@ public class FrameWorkBaseTest extends TestBase{
 		.all()
 		.spec(getRequestSpecification())
 		.queryParam("key", "qaclick123")
-		.pathParam(placeId, placeId)
 		.body(Payloads.deletePlaceApi(placeId))
 		.when()
 		.delete(URI.DELETE_UPDATE_PLACE.getURI())
